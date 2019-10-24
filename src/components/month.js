@@ -9,6 +9,10 @@ class Month extends Component {
         e.target.classList.add('hovered');
         console.log(e + ' is hovered');
     }
+    handleMouseOut = (e) => {
+        e.target.classList.remove('hovered');
+        console.log(e + ' is no longer hovered');
+    }
     render() {
         // Get the current date/time
         var now = moment();
@@ -30,9 +34,9 @@ class Month extends Component {
             
             <div>
                 <Header month={month} year= {year} />
-                <Square onHover={this.handleMouseOver} />
-                <Square onHover={this.handleMouseOver} />
-                <Square onHover={this.handleMouseOver} />
+                <Square onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
+                <Square onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
+                <Square onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
                 <p>Today's Day Of the Week: {dayOfWeek}</p>
                 <p>How many days in this month: {daysInMonth}</p>
                 <p>What number this month is: {month}</p>
