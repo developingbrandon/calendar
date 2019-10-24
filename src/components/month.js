@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Header from './header';
+import Square from './square';
 
 class Month extends Component {
+    
+    handleMouseOver = (e) => {
+        e.target.classList.add('hovered');
+        console.log(e + ' is hovered');
+    }
     render() {
         // Get the current date/time
         var now = moment();
@@ -24,6 +30,9 @@ class Month extends Component {
             
             <div>
                 <Header month={month} year= {year} />
+                <Square onHover={this.handleMouseOver} />
+                <Square onHover={this.handleMouseOver} />
+                <Square onHover={this.handleMouseOver} />
                 <p>Today's Day Of the Week: {dayOfWeek}</p>
                 <p>How many days in this month: {daysInMonth}</p>
                 <p>What number this month is: {month}</p>
