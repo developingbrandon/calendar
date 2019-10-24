@@ -30,19 +30,19 @@ class Month extends Component {
 
         var dayOfWeek = now.format('ddd');
         var daysInMonth = now.daysInMonth();
+        console.log(typeof(daysInMonth));
         return (
             
             <div>
                 <Header month={month} year= {year} />
-                <Square onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
-                <Square onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
-                <Square onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
+                <Square daysInMonth= {daysInMonth} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
                 <p>Today's Day Of the Week: {dayOfWeek}</p>
                 <p>How many days in this month: {daysInMonth}</p>
                 <p>What number this month is: {month}</p>
                 <p>The year is: {year}</p>
                 <p>The date string: {dateString}</p>
                 <p>The first day of the week is on a: {firstDayOfMonth}</p>
+                
             
             </div>
         )
