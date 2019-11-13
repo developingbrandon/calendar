@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Header from './header';
-import Square from './square';
+import Header from '../components/header';
+import Square from '../components/square';
 
 class Month extends Component {
     
@@ -22,10 +22,10 @@ class Month extends Component {
         var year = now.format('YYYY');
 
         // Make a string of the first day of the current month and year (YYYY-MMM-01)
-        var dateString = (year + '-' + month + '-01');
+        var firstOfMonthString = (year + '-' + month + '-1');
 
         //Find the starting position of the first day of this month (0-6)
-        var firstDayOfMonth = moment(dateString).format('d');
+        var firstDayPosition = moment(firstOfMonthString, "YYYY-MMMM-D").format('d');
 
 
         var dayOfWeek = now.format('ddd');
@@ -40,8 +40,8 @@ class Month extends Component {
                 <p>How many days in this month: {daysInMonth}</p>
                 <p>What number this month is: {month}</p>
                 <p>The year is: {year}</p>
-                <p>The date string: {dateString}</p>
-                <p>The first day of the week is on a: {firstDayOfMonth}</p>
+                <p>The date string: {firstOfMonthString}</p>
+                <p>The first day of the week is on a: {firstDayPosition}</p>
                 
             
             </div>
