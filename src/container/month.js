@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Header from '../components/header';
-import Square from '../components/square';
+//import Header from '../components/header';
+//import Square from '../components/square';
 
 class Month extends Component {
     
@@ -18,77 +18,62 @@ class Month extends Component {
         var now = moment();
 
         // Get the month and year (Jan...) and (20xx)
-        var month = now.format('MMMM');
+        var month = now.format('M');
         var year = now.format('YYYY');
-        var today = moment(now).format('YYYY-MMMM-D');
-        console.log(today);
+        var today = moment(now).format('YYYY-M-D');
+        var daysInMonth = now.daysInMonth();
 
-        // Make a string of the first day of the current month and year (YYYY-MMM-01)
+        // Make a string of the first day of the current month and year (YYYY-M-01)
         var firstOfMonthString = (year + '-' + month + '-1');
 
         //Find the starting position of the first day of this month (0-6)
-        var firstDayPosition = moment(firstOfMonthString, "YYYY-MMMM-D").format('d');
+        var firstDayPosition = moment(firstOfMonthString, "YYYY-M-D").format('d');
 
+        // Create array to hold each week:
+        var weeks = [];
 
-        var dayOfWeek = now.format('ddd');
-        var daysInMonth = now.daysInMonth();
-        console.log(typeof(daysInMonth));
+        // Create a variable to hold week string:
+        var week = '';
 
-        // Create an array to store an object for each day with a key and day value
-        var dayBlockArray = [];
-        var blocksInMonth = 0;
+        // Make an empty block
+        const emptyBlock = '<td></td>';
 
-        // Determine if 1st of the month is the first block, if not add additional blocks to total blocks needed.
-        firstDayPosition === 0 ? (
-            blocksInMonth = daysInMonth
-        ) : (
-            blocksInMonth = Number(daysInMonth) + Number(firstDayPosition) + Number(1)
-        );
+        // Include any empty blocks before dates begin:
+        week = emptyBlock.repeat(firstDayPosition);
 
-        console.log(`Number of blocks in the month is ${blocksInMonth} and the number of days is ${daysInMonth}`);
+        // Create the calendar
 
-        // Add key values
-        var block = {
-            key: null,
-            day: null
-        };
-        for (let i = 0; i < blocksInMonth; i++) {
-            dayBlockArray.push(block = {
-                key: i,
-                day: Number(i - firstDayPosition)
-            });
-            if (block.day < 0) {
-                block.day = null;
+        for (let day = 1; day <= daysInMonth; day++, firstDayPosition++) {
+            let date = year + '-' + month + '-' + day;
+
+            // Add a key to each block and a styling class for today:
+            if (today === date) {
+                week += '<td key=' + day + ' className="today">' + {day};
+            } else {
+                week += '<td key=' + day + ' >' + {day};
+            }
+
+            week += '</td>';
+
+            // IF end of the week or end of the month
+            if (firstDayPosition % 7 === 6 || day === daysInMonth) {
+                // Add empty blocks to complete the final week
+                if (day === daysInMonth) {
+                    week += emptyBlock.repeat(6 - (firstDayPosition % 7));
+                }
+
+                // Store week in weeks array:
+                weeks = '<tr>' + week + '</tr>';
+
+                // Clear week for the next week:
+                week = '';
             }
         }
-        console.log(`Block is ${block.key} and ${block.day}`);
-        console.log(`dayBlockArray35 is ${dayBlockArray[35].key}`);
-
-        // Add day number
-        var monthOfBlocksArray = [];
-        monthOfBlocksArray = dayBlockArray.map(key => {
-           if (key <= Number(firstDayPosition + 1)) {
-               return block.day = null;
-            } else {
-                return block.day = Number(key - firstDayPosition);
-            }
-        });
-
-        console.log('Month of blocks array 1 is: ', monthOfBlocksArray[1]);
 
         return (
             
             <div>
-                <Header month={month} year= {year} />
-                <Square firstDayPosition={firstDayPosition} blocksInMonth={blocksInMonth} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut} />
-                <p>Today's Day Of the Week: {dayOfWeek}</p>
-                <p>How many days in this month: {daysInMonth}</p>
-                <p>What number this month is: {month}</p>
-                <p>The year is: {year}</p>
-                <p>The date string: {firstOfMonthString}</p>
-                <p>The first day of the week is on a: {firstDayPosition}</p>
-                
-            
+                {weeks}
             </div>
         )
     }
