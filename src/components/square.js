@@ -1,25 +1,42 @@
 import React from 'react';
 
 function Square(props) {
-    const daysArray = [];
+    const blocksArray = [];
     let i;
-    for (i = 0; props.daysInMonth > i; ++i) {
-        daysArray.push(i);
+    for (i = 0; props.blocksInMonth > i; ++i) {
+        blocksArray.push({
+            key: i,
+            day: Number(i - props.firstDayPosition)
+        });
     }
-    console.log(daysArray);
-    const button = daysArray.map(day => {
+
+    const emptyBlock = '<td></td>';
+    const week = emptyBlock.repeat(Number(props.firstDayPosition));
+    console.log(props.firstDayPosition);
+    console.log(week);
+
+    blocksArray.map(day => {
+        if (blocksArray.day <= 0) {
+            return blocksArray.day = null
+        } else {
+            return blocksArray.day = day
+        }
+    });
+
+    console.log(blocksArray);
+    const button = blocksArray.map(block => {
         return (
-            <td>
+            <td key={blocksArray.key}>
                 <button className="date-container" onMouseOver={props.onMouseOver} onMouseOut={props.onMouseOut}>
-                    {day}
+                    {blocksArray[block]}
                 </button>
             </td>
         )
     });
     return (
-        <td>
+        <table>
             {button}
-        </td>
+        </table>
     )
 }
 
