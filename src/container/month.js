@@ -48,9 +48,9 @@ class Month extends Component {
 
             // Add a key to each block and a styling class for today:
             if (today === date) {
-                week += '<td key=' + day + ' className="today">' + {day};
+                week += '<td key=' + day + ' className="today"><button className="date-container" onMouseOver={props.onMouseOver} onMouseOut={props.onMouseOut}>' + {day} + '</button>';
             } else {
-                week += '<td key=' + day + ' >' + {day};
+                week += '<td key=' + day + ' ><button className="date-container" onMouseOver={props.onMouseOver} onMouseOut={props.onMouseOut}>' + {day} + '</button>';
             }
 
             week += '</td>';
@@ -63,13 +63,13 @@ class Month extends Component {
                 }
 
                 // Store week in weeks array:
-                weeks = '<tr>' + week + '</tr>';
+                weeks.push('<tr>' + week + '</tr>');
 
                 // Clear week for the next week:
                 week = '';
             }
         }
-
+        console.log(weeks);
         return (
             
             <div>
