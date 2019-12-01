@@ -75,7 +75,7 @@ class Month extends Component {
             <div>
                 {weeks}
             </div>
-        )
+        );
     }
 }
 
