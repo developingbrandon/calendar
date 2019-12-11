@@ -3,6 +3,15 @@
     height: 50px;
 }
 
+.calendar {
+    width: 370px;
+    height: auto;
+}
+
 .hovered {
     background-color: #ec8b5e;
+}
+
+.today {
+    border: 3px solid red;
 }
