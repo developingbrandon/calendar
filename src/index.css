@@ -3,6 +3,15 @@
     height: 50px;
 }
 
+.block {
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: red;
+    width: 50px;
+    height: auto;
+}
+
 .calendar {
     width: 370px;
     height: auto;

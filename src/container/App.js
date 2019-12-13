@@ -66,7 +66,7 @@ class App extends React.Component {
           // Add empty blocks to complete the final week
         if (day === daysInMonth) {
           for (let endEmptyDay = 1; endEmptyDay <= (6 - (firstDayPosition % 7)); endEmptyDay++) {
-            week.push(<EmptySquare key={Math.floor(Math.random() * 1000)} />);
+            week.push(<EmptySquare dayId="" key={Math.floor(Math.random() * 1000)} />);
           }
         }
       }

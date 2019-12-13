@@ -1,8 +1,9 @@
 import React from 'react';
 
-function EmptySquare() {
+function EmptySquare(props) {
     return (
         <button className="date-container">
+            {props.dayId}
         </button>
     )
 }
