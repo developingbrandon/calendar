@@ -12,6 +12,11 @@
     height: auto;
 }
 
+.empty {
+    background-color: #BDD7ED;
+    padding-top: 10px;
+}
+
 .calendar {
     width: 370px;
     height: auto;
