@@ -42,11 +42,11 @@ class App extends React.Component {
     var week = [];
 
     // Make an empty block
-    const emptyBlock = <EmptySquare />;
+    //const emptyBlock = <EmptySquare key={(Math.random() * 1000)} />;
 
     // Include any empty blocks before dates begin:
     for (let emptyDay = 1; emptyDay < firstDayPosition; emptyDay++) {
-      week.push(emptyBlock);
+      week.push(<EmptySquare key={Math.floor(Math.random() * 1000)} />);
     }
 
     // Create the calendar
@@ -56,9 +56,9 @@ class App extends React.Component {
 
       // Add a key to each block and a styling class for today:
       if (today === date) {
-          week.push(<Square dayId={day} today={true} />);
+          week.push(<Square dayId={day} today={true} key={day} />);
       } else {
-          week.push(<Square dayId={day} today={false} />);
+          week.push(<Square dayId={day} today={false} key={day} />);
       }
 
       // IF end of the week or end of the month
@@ -66,7 +66,7 @@ class App extends React.Component {
           // Add empty blocks to complete the final week
         if (day === daysInMonth) {
           for (let endEmptyDay = 1; endEmptyDay <= (6 - (firstDayPosition % 7)); endEmptyDay++) {
-            week.push(emptyBlock);
+            week.push(<EmptySquare key={Math.floor(Math.random() * 1000)} />);
           }
         }
       }
