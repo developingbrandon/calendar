@@ -41,9 +41,6 @@ class App extends React.Component {
     // Create a variable to hold week string:
     var week = [];
 
-    // Make an empty block
-    //const emptyBlock = <EmptySquare key={(Math.random() * 1000)} />;
-
     // Include any empty blocks before dates begin:
     for (let emptyDay = 1; emptyDay < firstDayPosition; emptyDay++) {
       week.push(<EmptySquare key={Math.floor(Math.random() * 1000)} />);
