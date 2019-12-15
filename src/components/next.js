@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Next() {
+function Next(props) {
     return (
         <button className="next" onClick={props.handleNext}>
             »

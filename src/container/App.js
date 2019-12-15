@@ -4,6 +4,7 @@ import Month from '../components/month';
 import Header from '../components/header';
 import EmptySquare from '../components/empty-square';
 import Square from '../components/square';
+import Next from '../components/next';
 import '../index.css';
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
     this.state = {
       now: moment()
     };
+    this.handleNext = this.handleNext.bind(this);
   }
 
   handleMouseOver = (e) => {
@@ -22,6 +24,13 @@ class App extends React.Component {
   handleMouseOut = (e) => {
     e.target.classList.remove('hovered');
     console.log(e + ' is no longer hovered');
+  }
+
+  handleNext = () => {
+    let now = moment().add(1, 'M');
+    this.setState = {
+      now
+    };
   }
 
   render() {
@@ -70,9 +79,12 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App">
-        <Header month={month} year={year}/>
-        <Month week={week}/>
+      <div>
+        <div className="App">
+          <Header month={month} year={year}/>
+          <Month week={week}/>
+        </div>
+        <Next handleNext={this.handleNext}/>
       </div>
     );
   }
