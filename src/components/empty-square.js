@@ -2,7 +2,7 @@ import React from 'react';
 
 function EmptySquare(props) {
     return (
-        <button className="date-container empty" onMouseOver="">
+        <button className="date-container empty">
             {props.dayId}
         </button>
     )

@@ -3,7 +3,7 @@ import Block from './header-block';
 
 function Header(props) {
     return (
-         <div className="calendar">
+         <div className="header">
              <div>
                  <span>{props.month} {props.year}</span>
              </div>

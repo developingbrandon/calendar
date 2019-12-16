@@ -4,6 +4,7 @@ import Month from '../components/month';
 import Header from '../components/header';
 import EmptySquare from '../components/empty-square';
 import Square from '../components/square';
+import Previous from '../components/previous';
 import Next from '../components/next';
 import '../index.css';
 
@@ -13,7 +14,8 @@ class App extends React.Component {
     this.state = {
       now: moment()
     };
-    this.handleNext = this.handleNext.bind(this);
+   this.handleNext = this.handleNext.bind(this);
+   this.handlePrevious = this.handlePrevious.bind(this);
   }
 
   handleMouseOver = (e) => {
@@ -24,6 +26,13 @@ class App extends React.Component {
   handleMouseOut = (e) => {
     e.target.classList.remove('hovered');
     console.log(e + ' is no longer hovered');
+  }
+
+  handlePrevious = () => {
+    let now = moment().subtract(1, 'M');
+    this.setState = {
+      now
+    };
   }
 
   handleNext = () => {
@@ -37,6 +46,7 @@ class App extends React.Component {
 
     // Get the month and year (Jan...) and (20xx)
     var month = this.state.now.format('M');
+    var monthLong = this.state.now.format('MMMM');
     var year = this.state.now.format('YYYY');
     var today = moment(this.state.now).format('YYYY-M-D');
     var daysInMonth = this.state.now.daysInMonth();
@@ -79,12 +89,14 @@ class App extends React.Component {
     }
 
     return (
-      <div>
-        <div className="App">
-          <Header month={month} year={year}/>
+      <div className="app">
+        <Header month={monthLong} year={year}/>
+        <div>
+          <Previous handlePrevious={this.handlePrevious}/>
           <Month week={week}/>
+          <Next handleNext={this.handleNext}/>
         </div>
-        <Next handleNext={this.handleNext}/>
+        
       </div>
     );
   }
