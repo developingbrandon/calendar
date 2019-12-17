@@ -56,15 +56,17 @@ class App extends React.Component {
 
     // Make a string of the first day of the current month and year (YYYY-M-01)
     var firstOfMonthString = (year + '-' + month + '-1');
+    console.log(`The firstOfMonthString is ${firstOfMonthString}`);
 
     //Find the starting position of the first day of this month (0-6)
     var  firstDayPosition = moment(firstOfMonthString, "YYYY-M-D").format('d');
+    console.log(`The firstDayPosition is ${firstDayPosition}`);
 
     // Create a variable to hold week string:
     var week = [];
 
     // Include any empty blocks before dates begin:
-    for (let emptyDay = 1; emptyDay < firstDayPosition; emptyDay++) {
+    for (let emptyDay = 1; emptyDay <= firstDayPosition; emptyDay++) {
       week.push(<EmptySquare key={Math.floor(Math.random() * 10000)} />);
     }
 
