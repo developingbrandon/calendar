@@ -14,8 +14,8 @@ class App extends React.Component {
     this.state = {
       now: moment()
     };
-   this.handleNext = this.handleNext.bind(this);
-   this.handlePrevious = this.handlePrevious.bind(this);
+   //this.handleNext = this.handleNext.bind(this);
+   //this.handlePrevious = this.handlePrevious.bind(this);
   }
 
   handleMouseOver = (e) => {
@@ -29,17 +29,19 @@ class App extends React.Component {
   }
 
   handlePrevious = () => {
-    let now = moment().subtract(1, 'M');
-    this.setState = {
-      now
-    };
+    let prevMonth = this.state.now.subtract(1, 'M');
+    this.setState({
+      now: prevMonth
+    });
+    console.log(this.state.now);
   }
 
   handleNext = () => {
-    let now = moment().add(1, 'M');
-    this.setState = {
-      now
-    };
+    let nextMonth = this.state.now.add(1, 'M');
+    this.setState({
+      now: nextMonth
+    });
+    console.log(this.state.now);
   }
 
   render() {
@@ -48,7 +50,8 @@ class App extends React.Component {
     var month = this.state.now.format('M');
     var monthLong = this.state.now.format('MMMM');
     var year = this.state.now.format('YYYY');
-    var today = moment(this.state.now).format('YYYY-M-D');
+    var today = moment().format('YYYY-M-D');
+    console.log(today);
     var daysInMonth = this.state.now.daysInMonth();
 
     // Make a string of the first day of the current month and year (YYYY-M-01)
@@ -62,7 +65,7 @@ class App extends React.Component {
 
     // Include any empty blocks before dates begin:
     for (let emptyDay = 1; emptyDay < firstDayPosition; emptyDay++) {
-      week.push(<EmptySquare key={Math.floor(Math.random() * 1000)} />);
+      week.push(<EmptySquare key={Math.floor(Math.random() * 10000)} />);
     }
 
     // Create the calendar
@@ -82,7 +85,7 @@ class App extends React.Component {
           // Add empty blocks to complete the final week
         if (day === daysInMonth) {
           for (let endEmptyDay = 1; endEmptyDay <= (6 - (firstDayPosition % 7)); endEmptyDay++) {
-            week.push(<EmptySquare dayId="" key={Math.floor(Math.random() * 1000)} />);
+            week.push(<EmptySquare dayId="" key={Math.floor(Math.random() * 10000)} />);
           }
         }
       }
