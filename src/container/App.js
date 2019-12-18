@@ -4,8 +4,6 @@ import Month from '../components/month';
 import Header from '../components/header';
 import EmptySquare from '../components/empty-square';
 import Square from '../components/square';
-import Previous from '../components/previous';
-import Next from '../components/next';
 import '../index.css';
 
 class App extends React.Component {
@@ -67,7 +65,7 @@ class App extends React.Component {
 
     // Include any empty blocks before dates begin:
     for (let emptyDay = 0; emptyDay < firstDayPosition; emptyDay++) {
-      week.push(<EmptySquare key={Math.floor(Math.random() * 10000)} />);
+      week.push(<EmptySquare key={Math.floor((Math.random() * 10000) + 40)} />);
     }
 
     // Create the calendar
@@ -95,11 +93,9 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <Header month={monthLong} year={year}/>
+        <Header month={monthLong} year={year} handlePrevious={this.handlePrevious} handleNext={this.handleNext}/>
         <div>
-          <Previous handlePrevious={this.handlePrevious}/>
           <Month week={week}/>
-          <Next handleNext={this.handleNext}/>
         </div>
         
       </div>

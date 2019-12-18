@@ -1,5 +1,6 @@
 .app {
-    width: 400px;
+    width: 350px;
+    font-family: 'Roboto';
 }
 
 .date-container {
@@ -21,8 +22,40 @@
     padding-top: 10px;
 }
 
-.header {
+.header-container {
     width: 100%;
+}
+
+.header-title {
+    width: 100%;
+    height: 30px;
+    display: grid;
+    grid-template-columns: 50px auto 50px;
+}
+
+.month-year {
+    grid-column: 2/3;
+    text-align: center;
+}
+
+.previous .next {
+    background-color: red;
+    width: 50px;
+}
+
+.previous {
+    grid-column: 1/2;
+}
+
+.next {
+    grid-column: 3/4;
+}
+
+.month-year, .previous, .next {
+    justify-self: center;
+    align-self: center;
+    color: black;
+    background-color: white;
 }
 
 .calendar {
@@ -38,10 +71,3 @@
     border: 3px solid red;
 }
 
-.next {
-    float: right;
-    height: 286px;
-    width: 15px;
-    text-align: center;
-    display: inline-block;
-}
