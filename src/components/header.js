@@ -1,5 +1,5 @@
 import React from 'react';
-import Block from './header-block';
+import Block from './block';
 import Next from './next';
 import Previous from './previous';
 

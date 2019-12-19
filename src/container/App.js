@@ -12,18 +12,14 @@ class App extends React.Component {
     this.state = {
       now: moment()
     };
-   //this.handleNext = this.handleNext.bind(this);
-   //this.handlePrevious = this.handlePrevious.bind(this);
   }
 
   handleMouseOver = (e) => {
     e.target.classList.add('hovered');
-    console.log(e + ' is hovered');
   }
 
   handleMouseOut = (e) => {
     e.target.classList.remove('hovered');
-    console.log(e + ' is no longer hovered');
   }
 
   handlePrevious = () => {
@@ -31,7 +27,6 @@ class App extends React.Component {
     this.setState({
       now: prevMonth
     });
-    console.log(this.state.now);
   }
 
   handleNext = () => {
@@ -39,7 +34,6 @@ class App extends React.Component {
     this.setState({
       now: nextMonth
     });
-    console.log(this.state.now);
   }
 
   render() {
@@ -49,16 +43,13 @@ class App extends React.Component {
     var monthLong = this.state.now.format('MMMM');
     var year = this.state.now.format('YYYY');
     var today = moment().format('YYYY-M-D');
-    console.log(today);
     var daysInMonth = this.state.now.daysInMonth();
 
     // Make a string of the first day of the current month and year (YYYY-M-01)
     var firstOfMonthString = (year + '-' + month + '-1');
-    console.log(`The firstOfMonthString is ${firstOfMonthString}`);
 
     //Find the starting position of the first day of this month (0-6)
     var  firstDayPosition = moment(firstOfMonthString, "YYYY-M-D").format('d');
-    console.log(`The firstDayPosition is ${firstDayPosition}`);
 
     // Create a variable to hold week string:
     var week = [];
