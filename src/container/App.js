@@ -6,13 +6,7 @@ import EmptySquare from '../components/empty-square';
 import Square from '../components/square';
 import '../index.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      now: moment()
-    };
-  }
+const App = ({ now }) => {
 
   handleMouseOver = (e) => {
     e.target.classList.add('hovered');
@@ -22,28 +16,12 @@ class App extends React.Component {
     e.target.classList.remove('hovered');
   }
 
-  handlePrevious = () => {
-    let prevMonth = this.state.now.subtract(1, 'M');
-    this.setState({
-      now: prevMonth
-    });
-  }
-
-  handleNext = () => {
-    let nextMonth = this.state.now.add(1, 'M');
-    this.setState({
-      now: nextMonth
-    });
-  }
-
-  render() {
-
     // Get the month and year (Jan...) and (20xx)
-    var month = this.state.now.format('M');
-    var monthLong = this.state.now.format('MMMM');
-    var year = this.state.now.format('YYYY');
+    var month = now.format('M');
+    var monthLong = now.format('MMMM');
+    var year = now.format('YYYY');
     var today = moment().format('YYYY-M-D');
-    var daysInMonth = this.state.now.daysInMonth();
+    var daysInMonth = now.daysInMonth();
 
     // Make a string of the first day of the current month and year (YYYY-M-01)
     var firstOfMonthString = (year + '-' + month + '-1');
@@ -91,7 +69,7 @@ class App extends React.Component {
         
       </div>
     );
-  }
+  
 }
 
 export default App;

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Next(props) {
+const Next = ({ handleNext }) => {
     return (
-        <button className="next" onClick={props.handleNext}>
+        <button className="next" onClick={() => handleNext}>
             »
         </button>
     )

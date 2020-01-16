@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Previous(props) {
+const Previous = ({ handlePrevious }) => {
     return (
-        <button className="previous" onClick={props.handlePrevious}>
+        <button className="previous" onClick={() => handlePrevious}>
             «
         </button>
     )
