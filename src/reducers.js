@@ -5,7 +5,7 @@ const initialState = {
     now: moment()
 };
 
-function reducer(state = initialState, action) {
+function rootReducer(state = initialState, action) {
     switch (action.type) {
         case CHANGE_MONTH_INCREMENT:
             let nextMonth = state.now.add(1, 'M');
