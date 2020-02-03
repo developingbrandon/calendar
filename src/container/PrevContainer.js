@@ -4,11 +4,12 @@ import Previous from '../components/previous';
 
 const mapDispatchToProps = dispatch => {
     return {
-        handlePrevious: dispatch(decrementMonth)
+        handlePrevious: () => dispatch(decrementMonth())
     }
 }
 
 const PrevContainer = connect(
+    null,
     mapDispatchToProps
 )(Previous);
 

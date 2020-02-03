@@ -1,10 +1,14 @@
-export const CHANGE_MONTH_INCREMEMNT = 'CHANGE_MONTH_INCREMEMNT';
-export const CHANGE_MONTH_DECREMENT = 'CHANGE_MONTH_DECREMENT';
+const CHANGE_MONTH_INCREMENT = 'CHANGE_MONTH_INCREMENT';
+const CHANGE_MONTH_DECREMENT = 'CHANGE_MONTH_DECREMENT';
 
-export function incrementMonth() {
-    return {type: CHANGE_MONTH_INCREMENT}
+export const incrementMonth = () => {
+      return {
+              type: CHANGE_MONTH_INCREMENT
+      }  
 };
 
-export function decrementMonth() {
-    return {type: CHANGE_MONTH_DECREMENT}
+export const decrementMonth = () => {
+        return {
+                type: CHANGE_MONTH_DECREMENT
+        }
 };

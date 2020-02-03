@@ -1,15 +1,15 @@
 import React from 'react';
 import Block from './block';
-import Next from './next';
-import Previous from './previous';
+import NextContainer from '../container/NextContainer';
+import PrevContainer from '../container/PrevContainer';
 
 function Header(props) {
     return (
          <div className="header-container">
              <div className="header-title">
-                 <Previous handlePrevious={props.handlePrevious} />
+                 <PrevContainer />
                  <span className="month-year">{props.month} {props.year}</span>
-                 <Next handleNext={props.handleNext} />
+                 <NextContainer />
              </div>
              <div>
                 <Block dayOfWeek='Sun'/>

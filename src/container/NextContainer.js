@@ -4,11 +4,12 @@ import Next from '../components/next';
 
 const mapDispatchToProps = dispatch => {
     return {
-        handleNext: dispatch(incrementMonth)
+        handleNext: () => dispatch(incrementMonth())
     }
 }
 
 const NextContainer = connect(
+    null,
     mapDispatchToProps
 )(Next);
 

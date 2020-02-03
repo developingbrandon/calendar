@@ -1,23 +1,23 @@
 import { connect } from 'react-redux';
-import App from './App';
-// import moment from 'moment';
+import App from '../components/App';
 
-/*const getNow = () => {
-    let now = moment();
-    return {
-        now
-    }
-
-} */
+console.log('App Container fire');
 
 const mapStateToProps = state => {
+    console.log(`App mapStateToProps fire`);
     return {
-        now: state.now
+        date: state.date,
+        today: state.today,
+        month: state.month,
+        monthLong: state.monthLong,
+        year: state.year,
+        daysInMonth: state.daysInMonth
     }
-}
+};
 
-const Container = connect(
-    mapStateToProps
+const AppContainer = connect(
+    mapStateToProps,
+    null
 )(App);
 
 export default AppContainer;

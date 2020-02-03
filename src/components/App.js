@@ -1,27 +1,34 @@
 import React from 'react';
 import moment from 'moment';
-import Month from '../components/month';
-import Header from '../components/header';
-import EmptySquare from '../components/empty-square';
-import Square from '../components/square';
+import Month from './month';
+import Header from './header';
+import EmptySquare from './empty-square';
+import Square from './square';
 import '../index.css';
 
-const App = ({ now }) => {
-
-  handleMouseOver = (e) => {
+const App = ({ date, today, month, monthLong, year, daysInMonth }) => {
+  console.log(`date is ${date} and today is ${today}`);
+  
+  const handleMouseOver = (e) => {
     e.target.classList.add('hovered');
   }
 
-  handleMouseOut = (e) => {
+  const handleMouseOut = (e) => {
     e.target.classList.remove('hovered');
   }
 
-    // Get the month and year (Jan...) and (20xx)
-    var month = now.format('M');
-    var monthLong = now.format('MMMM');
-    var year = now.format('YYYY');
-    var today = moment().format('YYYY-M-D');
-    var daysInMonth = now.daysInMonth();
+  var targetMonth = date;
+  console.log(`App targetMonth is: ${targetMonth}`);
+
+    /* Get the month and year (Jan...) and (20xx)
+    var month = date.format('M');
+    var monthLong = date.format('MMMM');
+    var year = date.format('YYYY');
+    var daysInMonth = date.daysInMonth();
+    console.log(`month is ${month}`);
+    console.log(`monthLong is ${monthLong}`);
+    console.log(`year is ${year}`);
+    console.log(`daysInMonth is ${daysInMonth}`);*/
 
     // Make a string of the first day of the current month and year (YYYY-M-01)
     var firstOfMonthString = (year + '-' + month + '-1');
@@ -44,9 +51,9 @@ const App = ({ now }) => {
 
       // Add a key to each block and a styling class for today:
       if (today === date) {
-          week.push(<Square dayId={day} today={true} key={day} />);
+          week.push(<Square dayId={day} today={true} key={day} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />);
       } else {
-          week.push(<Square dayId={day} today={false} key={day} />);
+          week.push(<Square dayId={day} today={false} key={day} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />);
       }
 
       // IF end of the week or end of the month
@@ -62,7 +69,7 @@ const App = ({ now }) => {
 
     return (
       <div className="app">
-        <Header month={monthLong} year={year} handlePrevious={this.handlePrevious} handleNext={this.handleNext}/>
+        <Header month={monthLong} year={year}/>
         <div>
           <Month week={week}/>
         </div>
